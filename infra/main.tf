@@ -25,9 +25,9 @@ resource "aws_security_group" "ec2_sg" {
 
 # EC2 інстанс
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-03250b0e01c28d196"
-  instance_type = "t2.micro"
-  key_name      = var.key_name
+  ami             = "ami-03250b0e01c28d196"
+  instance_type   = "t2.micro"
+  key_name        = var.key_name
   security_groups = [aws_security_group.ec2_sg.name]
 
   tags = {
