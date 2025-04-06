@@ -21,5 +21,8 @@ jobs:
         with:
           terraform_version: '1.4.0'  # Вкажіть потрібну версію Terraform
 
+      - name: Terraform Format
+        run: terraform fmt -write=true  # Автоматично відформатувати файли
+
       - name: Terraform Format Check
-        run: terraform fmt -diff -check
+        run: terraform fmt -diff -check  # Перевірка на правильне форматування
