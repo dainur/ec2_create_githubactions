@@ -5,14 +5,14 @@ provider "aws" {
 
 # Група безпеки (дозволяє SSH з будь-якої IP-адреси — за потреби обмеж)
 resource "aws_security_group" "ec2_sg" {
-  name        = "ec2_sg"
+  name        = "ec2_sg-${timestamp()}"  # Add a timestamp for uniqueness
   description = "Allow SSH inbound traffic"
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Увага: відкритий доступ, краще обмежити своїм IP
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
