@@ -3,13 +3,13 @@ name: Terraform Format Check
 on:
   pull_request:
     paths:
-      - '**/*.tf'  # Викликається при зміні .tf файлів
+      - '**/*.tf'
   push:
     paths:
-      - '**/*.tf'  # Викликається при пуші в .tf файли
+      - '**/*.tf'
 
 jobs:
-  format:
+  format-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: '1.4.0'  # Вкажіть потрібну версію Terraform
-
-      - name: Terraform Format
-        run: terraform fmt -write=true  # Автоматично відформатувати файли
+          terraform_version: '1.4.0'
 
       - name: Terraform Format Check
-        run: terraform fmt -diff -check  # Перевірка на правильне форматування
+        run: terraform fmt -check -diff
