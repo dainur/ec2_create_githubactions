@@ -43,5 +43,5 @@ variable "region" {
 # Змінна для ключа SSH
 variable "key_name" {
   description = "Назва існуючого SSH ключа у AWS"
-  default     = "myacademykey.pem"
+  default     = "myacademykey"
 }
