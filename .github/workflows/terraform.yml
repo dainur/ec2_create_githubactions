@@ -22,4 +22,6 @@ jobs:
           terraform_version: '1.4.0'
 
       - name: Terraform Format
-        run: terraform fmt -recursive
+        run: |
+         terraform fmt -recursive
+         terraform fmt -check
