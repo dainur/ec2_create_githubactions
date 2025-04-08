@@ -5,7 +5,7 @@ provider "aws" {
 
 # Група безпеки (дозволяє SSH з будь-якої IP-адреси — за потреби обмеж)
 resource "aws_security_group" "ec2_sg" {
-  name        = "ec2_sg-${timestamp()}"  # Add a timestamp for uniqueness
+  name        = "ec2_sg-${timestamp()}" # Add a timestamp for uniqueness
   description = "Allow SSH inbound traffic"
 
   ingress {
@@ -25,10 +25,13 @@ resource "aws_security_group" "ec2_sg" {
 
 # EC2 інстанс
 resource "aws_instance" "my_ec2" {
-  ami             = "ami-03250b0e01c28d196"
-  instance_type   = "t2.micro"
-  key_name        = var.key_name
-  security_groups = [aws_security_group.ec2_sg.name]
+  ami           = "ami-03250b0e01c28d196"
+  instance_type = "t2.micro"
+  key_name      = var.key_name
+
+  security_groups = [
+    aws_security_group.ec2_sg.name
+  ]
 
   tags = {
     Name = "GitHubActionsEC2"
